@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/add">Add a Todolist</a><br/>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Priority</th>
+        <td>Duedate</td>
+    </tr>
+    <tr th:each="todolist: ${todolist}">
+        <td th:text="${todolist.name}"></td>
+        <td th:text="${todolist.description}"></td>
+        <td th:text="${todolist.priority}"></td>
+        <td th:text="${todolist.duedate}"></td>
+        <td>
+            <a th:href="@{/update/{id}(id=${todolist.id})}">Update</a> -
+            <a th:href="@{/detail/{id}(id=${todolist.id})}">Detail</a> -
+            <a th:href="@{/delete/{id}(id=${todolist.id})}">Delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
